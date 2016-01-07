@@ -47,7 +47,9 @@
             <li><a href="@route('/collections/collection/'.$collection["_id"])" title="@lang('Edit collection')" data-uk-tooltip="{pos:'bottom'}"><i class="uk-icon-pencil"></i></a></li>
             <li><a class="uk-text-danger" ng-click="emptytable()" title="@lang('Empty collection')" data-uk-tooltip="{pos:'bottom'}"><i class="uk-icon-trash-o"></i></a></li>
             @end
+            @hasaccess?("Collections", 'manage.entries')
             <li><a href="@route('/collections/entry/'.$collection["_id"])" title="@lang('Add entry')" data-uk-tooltip="{pos:'bottom'}"><i class="uk-icon-plus-circle"></i></a></li>
+            @end
         </ul>
 
         @if($collection['sortfield'] != 'custom-order')
@@ -80,7 +82,9 @@
         <p class="uk-text-large">
             @lang('It seems you don\'t have any entries created.')
         </p>
+        @hasaccess?("Collections", 'manage.entries')
         <a href="@route('/collections/entry/'.$collection["_id"])" class="uk-button uk-button-success uk-button-large">@lang('Add entry')</a>
+        @end
     </div>
 
     <div class="app-panel uk-margin uk-text-center" data-ng-show="entries && filter && !entries.length">
@@ -97,7 +101,11 @@
                 <table id="entries-table" class="uk-table uk-table-striped" multiple-select="{model:entries}">
                     <thead>
                         <tr>
-                            <th width="10"><input class="js-select-all" type="checkbox"></th>
+                            <th width="10">
+                                @hasaccess?("Collections", 'manage.entries')
+                                    <input class="js-select-all" type="checkbox">
+                                @end
+                            </th>
                             <th>
                                 @lang('Fields')
                             </th>
@@ -107,7 +115,11 @@
                     </thead>
                     <tbody {{ $collection['sortfield'] == 'custom-order' ? 'data-uk-sortable="{animation:false}"':'' }}>
                         <tr class="js-multiple-select" data-ng-repeat="entry in entries track by entry._id">
-                            <td><input class="js-select" type="checkbox"></td>
+                            <td>
+                                @hasaccess?("Collections", 'manage.entries')
+                                    <input class="js-select" type="checkbox">
+                                @end
+                            </td>
                             <td>
                                 <div class="uk-grid uk-grid-preserve uk-text-small" data-ng-repeat="field in fields" data-ng-if="fields.length">
                                     <div class="uk-width-medium-1-5">
@@ -135,8 +147,12 @@
                                     <i class="uk-icon-bars"></i>
                                     <div class="uk-dropdown uk-dropdown-flip uk-text-left">
                                         <ul class="uk-nav uk-nav-dropdown uk-nav-parent-icon">
+                                            @hasaccess?("Collections", 'edit.entries')
                                             <li><a href="@route('/collections/entry/'.$collection["_id"])/@@ entry._id @@"><i class="uk-icon-pencil"></i> @lang('Edit entry')</a></li>
+                                            @end
+                                            @hasaccess?("Collections", 'manage.entries')
                                             <li><a href="#" data-ng-click="remove($index, entry._id)"><i class="uk-icon-trash-o"></i> @lang('Delete entry')</a></li>
+                                            @end
                                         </ul>
                                     </div>
                                 </div>
@@ -149,7 +165,9 @@
                     @if($collection['sortfield'] != 'custom-order')
                     <button class="uk-button uk-button-primary" data-ng-click="loadmore()" data-ng-show="entries && !nomore">@lang('Load more...')</button>
                     @endif
+                    @hasaccess?("Collections", 'manage.entries')
                     <button class="uk-button uk-button-danger" data-ng-click="removeSelected()" data-ng-show="selected"><i class="uk-icon-trash-o"></i> @lang('Delete entries')</button>
+                    @end
                 </div>
 
             </div>
