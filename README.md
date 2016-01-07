@@ -1,8 +1,13 @@
+# Why a New Fork
 
-# Notice:
+We are using this product for internal use, and need to add several features.  Since the original developer is going to move development to Cockpit Next, we want to maintain our own version of the code.  You are welcome to fork this repo, but you may want to checkout Cockpit Next at [aheinze's repo](https://github.com/aheinze/cockpit).
 
-Current development moved to the [Cockpit Next branch](https://github.com/aheinze/cockpit/tree/next)
+Development
+-----------
 
+This repository is following the branching technique described in [this blog post](http://nvie.com/posts/a-successful-git-branching-model/).
+
+Questions or problems? Please post them on the [issue tracker](https://github.com/MissionalDigerati/cockpit/issues). You can contribute changes by forking the project and submitting a pull request.
 
 # Cockpit
 
