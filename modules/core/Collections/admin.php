@@ -1,11 +1,11 @@
 <?php
 
 // ACL
-$this("acl")->addResource('Collections', ['manage.collections', 'manage.entries']);
+$this("acl")->addResource('Collections', ['manage.collections', 'manage.entries', 'edit.entries']);
 
 $app->on('admin.init', function() {
 
-    if (!$this->module('auth')->hasaccess('Collections', ['manage.collections', 'manage.entries'])) return;
+    if (!$this->module('auth')->hasaccess('Collections', ['manage.collections', 'manage.entries', 'edit.entries'])) return;
 
     // bind controllers
     $this->bindClass('Collections\\Controller\\Collections', 'collections');
@@ -35,7 +35,7 @@ $app->on('admin.init', function() {
 
 $app->on('admin.dashboard.aside', function() {
 
-    if (!$this->module('auth')->hasaccess('Collections', ['manage.collections', 'manage.entries'])) return;
+    if (!$this->module('auth')->hasaccess('Collections', ['manage.collections', 'manage.entries', 'edit.entries'])) return;
 
     $title       = $this('i18n')->get('Collections');
     $badge       = $this->db->getCollection('common/collections')->count();

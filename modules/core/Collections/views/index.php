@@ -118,7 +118,9 @@
                                     <ul class="uk-nav uk-nav-dropdown uk-nav-parent-icon">
 
                                         <li><a href="@route('/collections/entries')/@@ collection._id @@"><i class="uk-icon-list"></i> @lang('Show entries')</a></li>
+                                        @hasaccess?("Collections", 'manage.entries')
                                         <li><a href="@route('/collections/entry')/@@ collection._id @@"><i class="uk-icon-plus-circle"></i> @lang('Create new entry')</a></li>
+                                        @end
                                         @hasaccess?("Collections", 'manage.collections')
                                         <li class="uk-nav-divider"></li>
                                         <li><a href="@route('/collections/collection')/@@ collection._id @@"><i class="uk-icon-pencil"></i> @lang('Edit collection')</a></li>
@@ -158,7 +160,9 @@
                                         <ul class="uk-nav uk-nav-dropdown uk-nav-parent-icon">
 
                                             <li><a href="@route('/collections/entries')/@@ collection._id @@"><i class="uk-icon-list"></i> @lang('Show entries')</a></li>
+                                            @hasaccess?("Collections", 'manage.entries')
                                             <li><a href="@route('/collections/entry')/@@ collection._id @@"><i class="uk-icon-plus-circle"></i> @lang('Create new entry')</a></li>
+                                            @end
                                             @hasaccess?("Collections", 'manage.collections')
                                             <li class="uk-nav-divider"></li>
                                             <li><a href="@route('/collections/collection')/@@ collection._id @@"><i class="uk-icon-pencil"></i> @lang('Edit collection')</a></li>
